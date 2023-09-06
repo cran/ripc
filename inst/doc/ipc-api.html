@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>IPC API</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">IPC API</h1>
+
+
+
+<p>The ripc functions provide access to API endpoints detailed in the <a href="https://docs.api.ipcinfo.org">IPC-CH Public API</a> documentation.
+The documentation should be referred to in order to better understand
+the API calls themselves (under the simplified and advanced
+documentation sections), and the returned data. For ease of the user, a
+table to match up the simplified and advanced API endpoints with ripc
+functions is below.</p>
+<div id="api-and-ripc-functions" class="section level2">
+<h2>API and ripc functions</h2>
+<p>In general, the same functions can access both API endpoints, but the
+simplified endpoints are accessed with optional parameters while the
+advanced endpoints are accessed when IDs and/or periods are explicitly
+passed.</p>
+<div id="simplified-api" class="section level3">
+<h3>Simplified API</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">ripc</th>
+<th align="left">IPC API</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>ipc_get_analyses()</code></td>
+<td align="left">analyses</td>
+</tr>
+<tr class="even">
+<td align="left"><code>ipc_get_country()</code></td>
+<td align="left">country</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>ipc_get_areas()</code></td>
+<td align="left">areas</td>
+</tr>
+<tr class="even">
+<td align="left"><code>ipc_get_points()</code></td>
+<td align="left">points</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>ipc_get_icons()</code></td>
+<td align="left">icons</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="advanced-api" class="section level3">
+<h3>Advanced API</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">ripc</th>
+<th align="left">IPC API</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>ipc_get_analyses(id = ###)</code></td>
+<td align="left">analysis/{id}</td>
+</tr>
+<tr class="even">
+<td align="left"><code>ipc_get_areas(id = ###, period = X)</code></td>
+<td align="left">areas/{id}/{period}</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>ipc_get_population()</code></td>
+<td align="left">population</td>
+</tr>
+<tr class="even">
+<td align="left"><code>ipc_get_population(id = ###)</code></td>
+<td align="left">population/{id}</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>ipc_get_points(id = ###, period = X)</code></td>
+<td align="left">points/{id}/{period}</td>
+</tr>
+<tr class="even">
+<td align="left"><code>ipc_get_icons(id = ###, period = X)</code></td>
+<td align="left">icons/{id}/{period}</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="api-access" class="section level2">
+<h2>API access</h2>
+<p>Please refer to the <a href="https://docs.api.ipcinfo.org">IPC API
+documentation</a> to learn how to generate a token for the API you can
+use to access the data. This API key should be stored in your
+environment as <code>IPC_API_KEY</code>. You can easily add this to your
+environment by adding the following line to your <code>.Renviron</code>
+file, easily accessed using <code>usethis::edit_r_environ()</code>.</p>
+<pre><code>IPC_API_KEY=&quot;API key here&quot;</code></pre>
+<p>Make sure that your API key is granted access to the resources you
+need.</p>
+</div>
+<div id="output-data" class="section level2">
+<h2>Output data</h2>
+<p>Data coming from the IPC API isn’t immediately joinable, with varying
+naming conventions for geographical name/ID columns. Outputs from the
+ripc functions are wrangled to ease the joining of datasets together by
+standardizing some column names and keeping the data in a tidy format.
+You can specify <code>tidy_df = FALSE</code> for any
+<code>ipc_get_...()</code> function to return directly what the IPC-CH
+Public API returns.</p>
+<div id="tidy-data" class="section level3">
+<h3>Tidy data</h3>
+<p>The tidy format means that a specific analysis for a period (current,
+projection, or second projection) and geography (area/point, group, or
+country) are stored in a single row, with columns containing the
+relevant metadata, phase classification, and population figures. Data
+from mixed levels of geography are not stored in the same dataset.</p>
+<p>While full documentation of output data can be derived from the <a href="https://docs.api.ipcinfo.org">IPC API schema documentation</a>,
+key changes made to the outputs to create tidy data are documented
+below.</p>
+<ul>
+<li><code>analysis_id</code> is used across all datasets to identify the
+ID for a specific analysis.</li>
+<li><code>area_id</code> and <code>area_name</code> is used to identify
+area and point IDs across the datasets.</li>
+<li><code>group_id</code> and <code>group_name</code> for groups in the
+same manner.</li>
+<li><code>title</code> refers solely to the title of the analysis.</li>
+<li><code>phase#_num</code> and <code>phase#_pct</code> refer to the
+number of population and percent of population in each phase,
+respectively.</li>
+<li><code>analysis_period_start</code> and
+<code>analysis_period_end</code> are created to be easy to access and
+manipulate date columns (rather than strings) in the dataset,
+representing the start of an analysis period (1st day of the first
+month) and end of an analysis period (last day of the last month).</li>
+</ul>
+<p>Each exported function from ripc has a Tidy section describing the
+wrangling done.</p>
+</div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
