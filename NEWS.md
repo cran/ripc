@@ -1,6 +1,17 @@
+# ripc 0.2.1
+
+* Improved `ipc_get_population()` to deal with missing areas data when it is
+removed from the API.
+* Fixed `assert_start_end()` so it correctly tests `start` and `end` parameters
+without generating an error.
+* Fixed `ipc_get()` to initially read all numeric vectors as character in as
+some errors were created in nested data frames that only contained integers.
+* Ensured that all `ipg_get_...()` functions returned properly parsed numeric
+columns and fixed some unnesting data frames in `ipc_get_areas()`.
+
 # ripc 0.2.0
 
-* Changeed `anl_id` column to always be `analysis_id`.
+* Changed `anl_id` column to always be `analysis_id`.
 * Implemented optional `tidy_df` parameter so user can choose to receive data as
 returned direct from the API, and fully document cleaning in each function.
 * Updated function documentation and vignettes to match the new simplified and advanced API endpoints.
