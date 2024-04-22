@@ -1,6 +1,6 @@
 Package: ripc
 Title: Download and Tidy IPC and CH Data
-Version: 0.2.1
+Version: 0.3.0
 Authors@R: 
     person(
       given = "Seth",
@@ -18,13 +18,13 @@ Encoding: UTF-8
 RoxygenNote: 7.2.3
 URL: https://github.com/ocha-dap/ripc
 BugReports: https://github.com/ocha-dap/ripc/issues
-Imports: countrycode, dplyr, httr, lifecycle, lubridate, magrittr,
-        purrr, rlang, stringr, tidyr
+Imports: countrycode, dplyr, httr, jsonlite, lifecycle, lubridate,
+        purrr, readr, rlang, sf, stringr, tidyr
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2024-03-15 12:14:37 UTC; caldwellst
+Packaged: 2024-04-22 10:20:33 UTC; caldwellst
 Author: Seth Caldwell [aut, cre, cph]
 Maintainer: Seth Caldwell <caldwellst@gmail.com>
 Repository: CRAN
-Date/Publication: 2024-03-15 12:30:02 UTC
+Date/Publication: 2024-04-22 10:42:39 UTC
