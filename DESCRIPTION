@@ -1,6 +1,6 @@
 Package: ripc
 Title: Download and Tidy IPC and CH Data
-Version: 0.3.0
+Version: 0.3.1
 Authors@R: 
     person(
       given = "Seth",
@@ -23,8 +23,8 @@ Imports: countrycode, dplyr, httr, jsonlite, lifecycle, lubridate,
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2024-04-22 10:20:33 UTC; caldwellst
+Packaged: 2024-06-25 11:16:08 UTC; caldwellst
 Author: Seth Caldwell [aut, cre, cph]
 Maintainer: Seth Caldwell <caldwellst@gmail.com>
 Repository: CRAN
-Date/Publication: 2024-04-22 10:42:39 UTC
+Date/Publication: 2024-06-25 11:40:07 UTC

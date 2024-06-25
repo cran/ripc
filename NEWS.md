@@ -1,3 +1,9 @@
+# ripc 0.3.1
+
+* Fixed `type_convert_silent()` to parse `NA` strings as characters, not explicit
+missing values.
+* Fixed `ipc_get_analyses()` call to properly pass `country` parameter to the API.
+
 # ripc 0.3.0
 
 * Restructured API calls so that `ipc_get()` is more robust by defaulting
