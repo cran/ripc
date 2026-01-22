@@ -1,6 +1,6 @@
 Package: ripc
 Title: Download and Tidy IPC and CH Data
-Version: 0.3.2
+Version: 1.0.0
 Authors@R: 
     person(
       given = "Giulia",
@@ -21,11 +21,12 @@ BugReports: https://github.com/ocha-dap/ripc/issues
 Depends: R (>= 4.1.0)
 Imports: countrycode, dplyr, httr, jsonlite, lifecycle, lubridate,
         purrr, readr, rlang, sf, stringr, tidyr
-Suggests: knitr, rmarkdown
+Suggests: knitr, rmarkdown, spelling
 VignetteBuilder: knitr
+Language: en-US
 NeedsCompilation: no
-Packaged: 2026-01-09 12:28:57 UTC; marti
+Packaged: 2026-01-22 15:04:48 UTC; marti
 Author: Giulia Martini [aut, cre, cph]
 Maintainer: Giulia Martini <giulia.martini@un.org>
 Repository: CRAN
-Date/Publication: 2026-01-10 14:40:09 UTC
+Date/Publication: 2026-01-22 15:30:02 UTC

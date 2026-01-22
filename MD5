@@ -1,12 +1,12 @@
-af1b4e8367606a111f254dd4e04d9824 *DESCRIPTION
+ce07c4084bd5f7b4d46b241c852816c4 *DESCRIPTION
 1cffdf1a720b48ed61ec6740a6b9e7a2 *NAMESPACE
-115d0c8a6b1176f5d065a1a21faf9742 *NEWS.md
+0f3371d016d3a438e86aae8ec8b55e18 *NEWS.md
 ba340e1b2c2cc3d62fd5b9fbb0a4836e *R/Ripc-package.R
 9dd76f56974e8761b6541cfad9851590 *R/asserts.R
-e51bd17c657ecbe701b4f952933b7212 *R/create_areas_df.R
-964d0f63a3f66c96782579790cb117e9 *R/create_base_df.R
-c42e7ef546608e5e132b8450c776a95d *R/create_groups_df.R
-758954a6e4b6848446bdabd7fe60492f *R/extract_dates.R
+6c889377e2b65b758aa40440feeacb3e *R/create_areas_df.R
+062e6ed1a65b617d6a4c6030609bd22f *R/create_base_df.R
+c23fea67ed11929f6d2cf12779421b14 *R/create_groups_df.R
+6039c86c361ce48d96831075026538d2 *R/extract_dates.R
 958d077e2dd58a57ddf9898b4f917830 *R/ipc_get.R
 2f4b512a4ebb93af067a1a4577e0d50b *R/ipc_get_analyses.R
 860301c2933cdc65ff86585857e9c5a2 *R/ipc_get_areas.R
@@ -14,8 +14,8 @@ c42e7ef546608e5e132b8450c776a95d *R/create_groups_df.R
 9883cff6677938556e080711cbaa4b2b *R/ipc_get_icons.R
 e850086acd4515e05d395777a6e59a59 *R/ipc_get_points.R
 758377c344cd17a8a804587e1a838616 *R/ipc_get_population.R
-b5b80c61ad01cda65312b75fc7d69d08 *R/null_converter.R
-29aa476ee8e53c69130358a75a222cc3 *R/population_utils.R
+c5fb7e620b06c6b9aa7132f9cbb012b0 *R/null_converter.R
+64d184a3decc7866477ea4116fd8ecd7 *R/population_utils.R
 efdd6cc9117fdb231fee21da30583f6e *README.md
 488c8e006ed4a17522689315143d7e9f *build/vignette.rds
 83974119349d2e486929b90a267ab624 *inst/WORDLIST
@@ -38,4 +38,5 @@ f0aaa6c003a497895ab0a10cf5a3f1e1 *man/ipc_get_country.Rd
 fa4d73a7fdca631838d782bcc1b44e37 *man/ipc_get_points.Rd
 c97e6e8e39b5f6b269430917b16c7b7e *man/ipc_get_population.Rd
 7ed9c2c1a7efe63dd6792fb3cfaa0fb4 *man/ripc-package.Rd
+0622a97a2aaa3c342f09636052c2d7f5 *tests/spelling.R
 07e0fb61cd7434edae01c157fe3e102a *vignettes/ipc-api.Rmd
